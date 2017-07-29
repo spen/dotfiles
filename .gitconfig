@@ -30,6 +30,7 @@
 	# Switch to a branch, creating it if necessary
 	co = checkout
 
+	# Revert the last commit, but keep any staged changes
 	uncommit = "reset --soft HEAD~1"
 
 	# Show verbose output about tags, branches or remotes
@@ -45,6 +46,9 @@
 
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+	# Interactive rebase with the last 2 commits
+	fixup = "rebase -i HEAD~2"
 
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
