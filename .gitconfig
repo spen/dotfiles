@@ -27,9 +27,6 @@
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-	# Switch to a branch, creating it if necessary
-	co = checkout
-
 	# Revert the last commit, but keep any staged changes
 	uncommit = "reset --soft HEAD~1"
 
