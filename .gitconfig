@@ -26,6 +26,18 @@
 
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	
+	# Switch to a namespaced branch, creating it if necessary. Usefull for branched PR workflows
+	# For example:
+	# From add/some-feature
+	# > git fo better-styling
+	# Takes you to: add/some-feature--better-styling
+	fo = "!f() { \
+		declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
+		if [ $currentBranch != 'master' ]; then \
+			git checkout -b \"$currentBranch--$1\" 2> /dev/null || git checkout \"$currentBranch--$1\"; \
+		fi \
+	}; f"
 
 	# Revert the last commit, but keep any staged changes
 	uncommit = "reset --soft HEAD~1"
