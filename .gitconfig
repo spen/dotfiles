@@ -103,6 +103,10 @@
 			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
 		fi \
 	}; f"
+	
+	# Show recent branches
+	recent = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+	recent-co = reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | head -n5
 
 [apply]
 
