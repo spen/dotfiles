@@ -41,6 +41,10 @@
 
 	# Revert the last commit, but keep any staged changes
 	uncommit = "reset --soft HEAD~1"
+	
+	# Minimal effort commit without linting etc.
+	# A pseudo alternative to stashing
+	wip = "commit -am 'WIP' --no-verify"
 
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
