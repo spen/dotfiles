@@ -39,6 +39,16 @@
 		fi \
 	}; f"
 
+
+	forcebranch = "!f() { \
+		declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
+		if [ $currentBranch != 'master' ]; then \
+			git push --force-with-lease origin \"$currentBranch\"; \
+		fi \
+	}; f"
+
+	vommit = "! echo 🤢; git commit"
+
 	# Revert the last commit, but keep any staged changes
 	uncommit = "reset --soft HEAD~1"
 	
