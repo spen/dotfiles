@@ -39,38 +39,15 @@
 		fi \
 	}; f"
 
-	# Create a back-up branch of the current branch.
-	# For example:
-	# From add/some-feature
-	# > git fo better-styling
-	# Takes you to: add/some-feature--bu
-	# bu = "!f() { \
-	# 	declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-	# 	if [ $currentBranch != 'master' ]; then \
-	# 		git branch \"$currentBranch--bu\" 2> /dev/null \
-	# 	fi \
-	# }; f"
-
-	# Create a back-up branch of the current branch.
-	# For example:
-	# From add/some-feature
-	# > git fo better-styling
-	# Takes you to: add/some-feature--bu
-	# forcebranch = "!f() { \
-	# 	declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
-	# 	# if [ $currentBranch != 'master' ]; then \
-	# 	# 	git push origin \"$currentBranch\" --force \
-	# 	if [ $currentBranch != 'master' ]; then \
-	# 		git checkout -b \"$currentBranch--$1\" 2> /dev/null || git checkout \"$currentBranch--$1\"; \
-	# 	fi \
-	# }; f"
 
 	forcebranch = "!f() { \
 		declare currentBranch=\"$(git symbolic-ref --short HEAD)\"; \
 		if [ $currentBranch != 'master' ]; then \
-			git checkout -b \"$currentBranch--$1\" 2> /dev/null || git checkout \"$currentBranch--$1\"; \
+			git push --force-with-lease origin \"$currentBranch\"; \
 		fi \
 	}; f"
+
+	vommit = "! echo 🤢; git commit"
 
 	# Revert the last commit, but keep any staged changes
 	uncommit = "reset --soft HEAD~1"
