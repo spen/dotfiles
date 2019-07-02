@@ -6,4 +6,4 @@
 
 This repo exists as a quick set up for myself when using a new machine.
 You're free to use or fork it but I do recommend checking out Mathias' [dotfiles](https://github.com/mathiasbynens/dotfiles) - the project that this repo is forked from.
-That project will be better maintained, will likely have more sensable defaults and more detailed set up instructions.
+That project will be better maintained, will likely have more sensible defaults and more detailed set up instructions.
